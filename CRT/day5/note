@@ -1,0 +1,31 @@
+static int mountain(int[] arr){
+    int maxcount=0,i=1;
+    int len=arr.length;
+    while(i<=len-2){
+        if(peak(arr[i],arr)){
+            int n=i,m=i;
+            int count=0;
+            while (arr[n-1]<arr[n]) { 
+                count++;
+                n--;
+            }
+            while(arr[m]>arr[m+1]){
+                count++;
+                m++;
+            }
+            if(count>maxcount){
+                maxcount=count;
+            }
+        }
+        i++;
+    }
+    return maxcount;
+}
+static boolean peak(int n,int[] arr){
+    if (arr[n-1]>arr[n] && arr[n]>arr[n+1]) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
